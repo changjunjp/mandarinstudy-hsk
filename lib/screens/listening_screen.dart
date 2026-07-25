@@ -67,12 +67,12 @@ class _ListeningScreenState extends State<ListeningScreen> {
     final theme = Theme.of(context);
 
     if (!ds.isLoaded) {
-      return const Scaffold(body: Center(child: CircularProgressIndicator()));
+      return Scaffold(body: Center(child: CircularProgressIndicator()));
     }
 
     if (_items.isEmpty) _loadItems(ds);
     if (_items.isEmpty) {
-      return const Scaffold(
+      return Scaffold(
         appBar: AppBar(title: Text('リスニング')),
         body: Center(child: Text('データがありません')),
       );
@@ -130,7 +130,7 @@ class _ListeningScreenState extends State<ListeningScreen> {
                           shape: BoxShape.circle,
                           boxShadow: [
                             BoxShadow(
-                              color: theme.colorScheme.primary.withValues(alpha: 0.3),
+                              color: theme.colorScheme.primary.withOpacity(0.3),
                               blurRadius: _isPlaying ? 24 : 8,
                               offset: const Offset(0, 4),
                             ),

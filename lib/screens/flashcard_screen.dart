@@ -53,7 +53,7 @@ class _FlashcardScreenState extends State<FlashcardScreen> {
     final theme = Theme.of(context);
 
     if (!ds.isLoaded) {
-      return const Scaffold(body: Center(child: CircularProgressIndicator()));
+      return Scaffold(body: Center(child: CircularProgressIndicator()));
     }
 
     if (_cards.isEmpty) {
@@ -61,7 +61,7 @@ class _FlashcardScreenState extends State<FlashcardScreen> {
     }
 
     if (_cards.isEmpty) {
-      return const Scaffold(
+      return Scaffold(
         appBar: AppBar(title: Text('暗記カード')),
         body: Center(child: Text('データがありません')),
       );
@@ -115,7 +115,7 @@ class _FlashcardScreenState extends State<FlashcardScreen> {
                     borderRadius: BorderRadius.circular(24),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withValues(alpha: 0.1),
+                        color: Colors.black.withOpacity(0.1),
                         blurRadius: 12,
                         offset: const Offset(0, 4),
                       ),
@@ -158,7 +158,7 @@ class _FlashcardScreenState extends State<FlashcardScreen> {
                             Text(
                               item.english,
                               style: theme.textTheme.titleMedium?.copyWith(
-                                color: theme.colorScheme.onSecondaryContainer.withValues(alpha: 0.7),
+                                color: theme.colorScheme.onSecondaryContainer.withOpacity(0.7),
                               ),
                               textAlign: TextAlign.center,
                             ),
@@ -172,7 +172,7 @@ class _FlashcardScreenState extends State<FlashcardScreen> {
                           Text(
                             _showAnswer ? '' : 'タップして答えを見る',
                             style: theme.textTheme.bodySmall?.copyWith(
-                              color: theme.colorScheme.onPrimaryContainer.withValues(alpha: 0.5),
+                              color: theme.colorScheme.onPrimaryContainer.withOpacity(0.5),
                             ),
                           ),
                         ],

@@ -86,7 +86,7 @@ class _QuizScreenState extends State<QuizScreen> {
     final theme = Theme.of(context);
 
     if (!ds.isLoaded) {
-      return const Scaffold(body: Center(child: CircularProgressIndicator()));
+      return Scaffold(body: Center(child: CircularProgressIndicator()));
     }
 
     if (_questions.isEmpty) {
@@ -134,7 +134,7 @@ class _QuizScreenState extends State<QuizScreen> {
     }
 
     if (_questions.isEmpty) {
-      return const Scaffold(
+      return Scaffold(
         appBar: AppBar(title: Text('クイズ')),
         body: Center(child: Text('データがありません')),
       );
@@ -224,9 +224,9 @@ class _QuizScreenState extends State<QuizScreen> {
                   Color? bgColor;
                   if (_selectedAnswer != null) {
                     if (isCorrect) {
-                      bgColor = Colors.green.withValues(alpha: 0.15);
+                      bgColor = Colors.green.withOpacity(0.15);
                     } else if (isSelected && !isCorrect) {
-                      bgColor = Colors.red.withValues(alpha: 0.15);
+                      bgColor = Colors.red.withOpacity(0.15);
                     }
                   }
 
