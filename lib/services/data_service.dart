@@ -1,8 +1,9 @@
 import 'dart:convert';
 import 'package:flutter/services.dart';
+import 'package:flutter/foundation.dart';
 import '../models/hsk_item.dart';
 
-class DataService {
+class DataService extends ChangeNotifier {
   List<HskItem> _words = [];
   List<HskItem> _sentences = [];
   List<HskItem> _allItems = [];
@@ -30,6 +31,7 @@ class DataService {
     _sentences = sentencesList;
     _allItems = [...wordsList, ...sentencesList];
     _loaded = true;
+    notifyListeners();
   }
 
   List<String> getTopics() {
