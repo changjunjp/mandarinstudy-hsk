@@ -18,26 +18,25 @@ class _HomeScreenState extends State<HomeScreen> {
   int _currentIndex = 0;
   bool _loaded = false;
 
-  final List<Widget> _screens = [
-    const WordListScreen(),
-    const SentenceListScreen(),
-    const FlashcardScreen(),
-    const QuizScreen(),
-    const ListeningScreen(),
+  final List<Widget> _screens = const [
+    WordListScreen(),
+    SentenceListScreen(),
+    FlashcardScreen(),
+    QuizScreen(),
+    ListeningScreen(),
   ];
 
   @override
   void initState() {
     super.initState();
-    _loadData();
+    WidgetsBinding.instance.addPostFrameCallback((_) => _loadData());
   }
 
   Future<void> _loadData() async {
+    if (!mounted) return;
     final dataService = context.read<DataService>();
-    if (!dataService.isLoaded) {
-      await dataService.loadData();
-      setState(() => _loaded = true);
-    } else {
+    await dataService.loadData();
+    if (mounted) {
       setState(() => _loaded = true);
     }
   }
